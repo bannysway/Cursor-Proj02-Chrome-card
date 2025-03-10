@@ -12,16 +12,16 @@ h1 {
     margin-bottom: 20px;
     color: #2c3e50;
     text-align: center;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .preview-container {
     background-color: white;
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    min-height: 150px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    min-height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,37 +31,36 @@ h1 {
 
 #card-preview {
     width: 100%;
-    min-height: 100px;
+    min-height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 15px;
+    padding: 20px;
     box-sizing: border-box;
     font-size: 16px;
     line-height: 1.6;
     transition: all 0.3s ease;
+    border-radius: 12px;
 }
 
 .options-container {
     background-color: white;
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .section-title {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     color: #2c3e50;
-    margin-bottom: 15px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 12px;
 }
 
 .option-group {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .option-group:last-child {
@@ -69,16 +68,16 @@ h1 {
 }
 
 .option-buttons {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 8px;
     margin-bottom: 16px;
 }
 
 .option-button {
-    flex: 1;
     padding: 8px 12px;
     border: 1px solid #e0e0e0;
-    border-radius: 6px;
+    border-radius: 8px;
     background: white;
     color: #666;
     cursor: pointer;
@@ -87,20 +86,19 @@ h1 {
 }
 
 .option-button.active {
-    background: #007bff;
+    background: #007AFF;
     color: white;
-    border-color: #007bff;
+    border-color: #007AFF;
 }
 
-.color-options {
+.color-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
-    margin-bottom: 16px;
+    margin-top: 12px;
 }
 
 .color-option {
-    width: 100%;
     aspect-ratio: 1;
     border-radius: 8px;
     cursor: pointer;
@@ -109,13 +107,21 @@ h1 {
 }
 
 .color-option.active {
-    border-color: #007bff;
+    border-color: #007AFF;
     transform: scale(0.95);
 }
 
+/* 渐变背景选项 */
+.gradient-1 { background: linear-gradient(135deg, #E8F0FF 0%, #D6E4FF 100%); }
+.gradient-2 { background: linear-gradient(135deg, #FFE8E8 0%, #FFD6D6 100%); }
+.gradient-3 { background: linear-gradient(135deg, #E8FFF1 0%, #D6FFE4 100%); }
+.gradient-4 { background: linear-gradient(135deg, #E8E8FF 0%, #D6D6FF 100%); }
+.gradient-5 { background: linear-gradient(135deg, #FFF1E8 0%, #FFE4D6 100%); }
+.gradient-6 { background: linear-gradient(135deg, #F1E8FF 0%, #E4D6FF 100%); }
+
 label {
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     font-weight: 500;
     color: #2c3e50;
     font-size: 14px;
@@ -123,25 +129,25 @@ label {
 
 select {
     width: 100%;
-    padding: 8px 12px;
+    padding: 10px 12px;
     border: 1px solid #e0e0e0;
-    border-radius: 6px;
+    border-radius: 8px;
     background-color: white;
     font-size: 14px;
     color: #333;
     cursor: pointer;
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
-    background-position: right 8px center;
+    background-position: right 12px center;
     background-size: 16px;
-    padding-right: 32px;
+    padding-right: 40px;
 }
 
 select:focus {
     outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 3px rgba(0,123,255,0.15);
+    border-color: #007AFF;
+    box-shadow: 0 0 0 3px rgba(0,122,255,0.15);
 }
 
 .button-group {
@@ -161,45 +167,20 @@ button {
 }
 
 #preview {
-    background-color: #f8f9fa;
+    background-color: #F5F5F7;
     color: #333;
-    border: 1px solid #dee2e6;
+    border: 1px solid #E0E0E0;
 }
 
 #preview:hover {
-    background-color: #e9ecef;
+    background-color: #EAEAEA;
 }
 
 #export {
-    background-color: #007bff;
+    background-color: #007AFF;
     color: white;
 }
 
 #export:hover {
-    background-color: #0056b3;
-}
-
-/* 添加渐变背景选项的样式 */
-.gradient-1 {
-    background: linear-gradient(135deg, #E8F0FF 0%, #D6E4FF 100%);
-}
-
-.gradient-2 {
-    background: linear-gradient(135deg, #FFE8E8 0%, #FFD6D6 100%);
-}
-
-.gradient-3 {
-    background: linear-gradient(135deg, #E8FFF1 0%, #D6FFE4 100%);
-}
-
-.gradient-4 {
-    background: linear-gradient(135deg, #E8E8FF 0%, #D6D6FF 100%);
-}
-
-.gradient-5 {
-    background: linear-gradient(135deg, #FFF1E8 0%, #FFE4D6 100%);
-}
-
-.gradient-6 {
-    background: linear-gradient(135deg, #F1E8FF 0%, #E4D6FF 100%);
+    background-color: #0056B3;
 } 
