@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景卡片 -->
+    <rect width="16" height="16" rx="4" fill="url(#gradient)"/>
+    <!-- 引号装饰 -->
+    <path d="M4.5 6.5h7M4.5 8.5h7M4.5 10.5h5" stroke="white" stroke-width="1" stroke-linecap="round"/>
+    <!-- 渐变定义 -->
+    <defs>
+        <linearGradient id="gradient" x1="0" y1="0" x2="16" y2="16" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#4A90E2"/>
+            <stop offset="100%" stop-color="#9B51E0"/>
+        </linearGradient>
+    </defs>
+</svg> 

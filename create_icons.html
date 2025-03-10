@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>图标生成器</title>
+</head>
+<body>
+    <h1>图标生成器</h1>
+    <p>使用此工具生成不同尺寸的图标</p>
+    
+    <div>
+        <svg id="icon-svg" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+            <rect width="128" height="128" rx="20" fill="#f0f5ff" />
+            <rect x="24" y="24" width="80" height="80" rx="10" fill="#4285f4" />
+            <path d="M44,64 L84,64 M64,44 L64,84" stroke="white" stroke-width="8" stroke-linecap="round" />
+        </svg>
+    </div>
+    
+    <div>
+        <h2>生成图标</h2>
+        <button id="generate-16">生成16x16图标</button>
+        <button id="generate-48">生成48x48图标</button>
+        <button id="generate-128">生成128x128图标</button>
+    </div>
+    
+    <div>
+        <h2>预览</h2>
+        <canvas id="canvas-16" width="16" height="16"></canvas>
+        <canvas id="canvas-48" width="48" height="48"></canvas>
+        <canvas id="canvas-128" width="128" height="128"></canvas>
+    </div>
+    
+    <div>
+        <h2>下载</h2>
+        <a id="download-16" download="icon16.png">下载16x16图标</a><br>
+        <a id="download-48" download="icon48.png">下载48x48图标</a><br>
+        <a id="download-128" download="icon128.png">下载128x128图标</a>
+    </div>
+    
+    <script>
+        function generateIcon(size) {
+            const svg = document.getElementById('icon-svg');
+            const canvas = document.getElementById(`canvas-${size}`);
+            const ctx = canvas.getContext('2d');
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const img = new Image();
+            
+            const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
+            const url = URL.createObjectURL(svgBlob);
+            
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0, size, size);
+                URL.revokeObjectURL(url);
+                
+                const downloadLink = document.getElementById(`download-${size}`);
+                downloadLink.href = canvas.toDataURL('image/png');
+            };
+            
+            img.src = url;
+        }
+        
+        document.getElementById('generate-16').addEventListener('click', () => generateIcon(16));
+        document.getElementById('generate-48').addEventListener('click', () => generateIcon(48));
+        document.getElementById('generate-128').addEventListener('click', () => generateIcon(128));
+    </script>
+</body>
+</html> 
