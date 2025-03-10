@@ -149,9 +149,9 @@ async function exportImage() {
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
 
-        // 设置 canvas 尺寸
-        canvas.width = 800;
-        canvas.height = 400;
+        // 设置 canvas 尺寸（调整为更合适的比例）
+        canvas.width = 600;
+        canvas.height = 300;
 
         // 绘制背景
         const background = window.getComputedStyle(previewContainer).background;
@@ -170,16 +170,19 @@ async function exportImage() {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // 绘制文本
-        ctx.font = window.getComputedStyle(preview).font;
+        const baseFont = window.getComputedStyle(preview).font;
+        // 增大字体尺寸
+        const fontSize = parseInt(window.getComputedStyle(preview).fontSize) * 1.5;
+        ctx.font = baseFont.replace(/\d+px/, `${fontSize}px`);
         ctx.fillStyle = '#333333';
         ctx.textAlign = preview.style.textAlign || 'center';
 
         // 文本换行处理
-        const maxWidth = canvas.width - 100;
+        const maxWidth = canvas.width - 80; // 减小边距以容纳更大字体
         const words = selectedText.split('');
         let line = '';
         const lines = [];
-        const lineHeight = parseInt(window.getComputedStyle(preview).fontSize) * 1.5;
+        const lineHeight = fontSize * 1.5;
 
         for (let word of words) {
             const testLine = line + word;
@@ -197,8 +200,8 @@ async function exportImage() {
         // 绘制文本
         const startY = (canvas.height - (lines.length * lineHeight)) / 2;
         lines.forEach((line, index) => {
-            const x = ctx.textAlign === 'left' ? 50 : 
-                     ctx.textAlign === 'right' ? canvas.width - 50 : 
+            const x = ctx.textAlign === 'left' ? 40 : 
+                     ctx.textAlign === 'right' ? canvas.width - 40 : 
                      canvas.width / 2;
             ctx.fillText(line, x, startY + (index * lineHeight));
         });
