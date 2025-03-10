@@ -1,95 +1,57 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>金句卡片生成器</title>
     <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-    <div id="app">
-        <h1>金句卡片生成器</h1>
-        
-        <!-- 预览区域 -->
-        <div class="preview-container">
-            <div id="card-preview">请先选择文字</div>
-        </div>
-
-        <!-- 选项区域 -->
-        <div class="options-container">
-            <!-- 模板选择 -->
-            <div class="option-group">
-                <div class="section-title">选择模板</div>
-                <select id="theme">
-                    <option value="simple">简约</option>
-                    <option value="vintage">复古</option>
-                    <option value="modern">现代</option>
-                </select>
-            </div>
-
-            <!-- 背景选择 -->
-            <div class="option-group">
-                <div class="section-title">背景设置</div>
-                <select id="background">
-                    <option value="gradient1">渐变色1</option>
-                    <option value="gradient2">渐变色2</option>
-                    <option value="gradient3">渐变色3</option>
-                    <option value="gradient4">渐变色4</option>
-                    <option value="gradient5">渐变色5</option>
-                    <option value="gradient6">渐变色6</option>
-                </select>
-            </div>
-
-            <!-- 字体选择 -->
-            <div class="option-group">
-                <label for="font">字体设置</label>
-                <select id="font">
-                    <option value="font1">思源黑体</option>
-                    <option value="font2">思源宋体</option>
-                    <option value="font3">霞鹜文楷</option>
-                    <option value="font4">阿里巴巴普惠体</option>
-                    <option value="font5">站酷高端黑</option>
-                    <option value="font6">优设标题黑</option>
-                </select>
-            </div>
-
-            <!-- 对齐方式 -->
-            <div class="option-group">
-                <label for="textAlign">文字对齐</label>
-                <select id="textAlign">
-                    <option value="left">左对齐</option>
-                    <option value="center">居中</option>
-                    <option value="right">右对齐</option>
-                </select>
-            </div>
-
-            <!-- 导出设置 -->
-            <div class="option-group">
-                <label for="exportFormat">导出格式</label>
-                <select id="exportFormat">
-                    <option value="png">PNG</option>
-                    <option value="jpg">JPG</option>
-                    <option value="webp">WEBP</option>
-                </select>
-            </div>
-
-            <div class="option-group">
-                <label for="quality">图片质量</label>
-                <select id="quality">
-                    <option value="1">最高</option>
-                    <option value="0.8">高</option>
-                    <option value="0.6">中</option>
-                    <option value="0.4">低</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- 按钮组 -->
-        <div class="button-group">
-            <button id="preview">预览效果</button>
-            <button id="export">导出卡片</button>
-        </div>
+    <div class="preview-container">
+        <div id="card-preview">请先选择文字</div>
     </div>
-    <script type="module" src="popup.js"></script>
+
+    <div class="section-title">选择模板</div>
+    <div class="template-buttons">
+        <button class="template-button active">简约</button>
+        <button class="template-button">复古</button>
+        <button class="template-button">现代</button>
+    </div>
+
+    <div class="section-title">背景设置</div>
+    <div class="color-grid">
+        <div class="color-option color-white"></div>
+        <div class="color-option color-pink"></div>
+        <div class="color-option color-blue"></div>
+        <div class="color-option gradient-purple active"></div>
+        <div class="color-option gradient-orange"></div>
+        <div class="color-option gradient-pink"></div>
+    </div>
+
+    <div class="section-title">字体设置</div>
+    <select id="font-select">
+        <option value="default">默认字体</option>
+        <option value="songti">宋体</option>
+        <option value="heiti">黑体</option>
+        <option value="kaiti">楷体</option>
+    </select>
+
+    <div class="section-title">文字对齐</div>
+    <div class="align-buttons">
+        <button class="align-button">左对齐</button>
+        <button class="align-button active">居中</button>
+        <button class="align-button">右对齐</button>
+    </div>
+
+    <div class="section-title">导出设置</div>
+    <select id="export-select">
+        <option value="png">PNG</option>
+        <option value="jpg">JPG</option>
+        <option value="webp">WEBP</option>
+    </select>
+
+    <div class="button-container">
+        <button id="save-button">保存图片</button>
+    </div>
+
+    <script src="popup.js" defer></script>
 </body>
 </html> 
